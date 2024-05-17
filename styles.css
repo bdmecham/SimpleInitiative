@@ -1,0 +1,132 @@
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff8dc;
+    border: 3px solid #8b4513;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Papyrus', fantasy;
+    color: #8b4513;
+    margin-bottom: 20px;
+}
+
+.input-section {
+    margin-bottom: 20px;
+}
+
+.input-section input {
+    padding: 10px;
+    margin: 5px;
+    border: 2px solid #8b4513;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-section button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8b4513;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-section button:hover {
+    background-color: #a0522d;
+}
+
+.controls-section {
+    margin-bottom: 20px;
+}
+
+.controls-section button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8b4513;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.controls-section button:hover {
+    background-color: #a0522d;
+}
+
+.controls-section span {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.player-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.player-item {
+    background-color: #ffe4b5;
+    border: 2px solid #8b4513;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-item.active {
+    background-color: #f0e68c;
+}
+
+.player-item .controls {
+    display: flex;
+    gap: 5px;
+}
+
+.player-item button {
+    background-color: #b22222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-item button:hover {
+    background-color: #dc143c;
+}
+
+.player-item .move-up,
+.player-item .move-down {
+    background-color: #8b4513;
+}
+
+.player-item .move-up:hover,
+.player-item .move-down:hover {
+    background-color: #a0522d;
+}
+
+.player-item .arrow {
+    font-size: 18px;
+    line-height: 1;
+}

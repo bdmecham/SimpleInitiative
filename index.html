@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Initiative</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Initiative</h1>
+        <div class="input-section">
+            <input type="text" id="playerName" placeholder="Player Name">
+            <input type="number" id="initiativeRoll" placeholder="Initiative Roll">
+            <button onclick="addPlayer()">Add Player</button>
+            <button onclick="sortPlayers()">Sort Players</button>
+        </div>
+        <div id="controls" class="controls-section">
+            <button onclick="startInitiative()">Start Initiative</button>
+            <button onclick="advancePlayer()">Next Player</button>
+            <button onclick="resetRounds()">Reset Rounds</button>
+            <span id="roundCounter">Rounds: 0</span>
+        </div>
+        <div id="playerList" class="player-list"></div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
