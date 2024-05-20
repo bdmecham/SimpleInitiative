@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Initiative</title>
+    <title>D&D Initiative Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Simple Initiative</h1>
+        <h1>D&D Initiative Tracker</h1>
         <div class="input-section">
             <input type="text" id="playerName" placeholder="Player Name">
             <input type="number" id="initiativeRoll" placeholder="Initiative Roll">
@@ -18,8 +18,17 @@
         <div id="controls" class="controls-section">
             <button onclick="startInitiative()">Start Initiative</button>
             <button onclick="advancePlayer()">Next Player</button>
-            <button onclick="resetRounds()">Reset Rounds</button>
+            <button onclick="clearAll()">Clear</button>
             <span id="roundCounter">Rounds: 0</span>
+        </div>
+        <div class="theme-selector">
+            <label for="theme">Choose a theme: </label>
+            <select id="theme" onchange="changeTheme()">
+                <option value="default">Default</option>
+                <option value="dark">Dark</option>
+                <option value="forest">Forest</option>
+                <option value="ocean">Ocean</option>
+            </select>
         </div>
         <div id="playerList" class="player-list"></div>
     </div>

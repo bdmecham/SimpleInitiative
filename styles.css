@@ -1,7 +1,20 @@
+:root {
+    --bg-color: #f0f8ff;
+    --container-bg-color: #fff8dc;
+    --border-color: #8b4513;
+    --text-color: #333;
+    --button-bg-color: #8b4513;
+    --button-hover-bg-color: #a0522d;
+    --player-item-bg-color: #ffe4b5;
+    --active-player-bg-color: #f0e68c;
+    --remove-button-bg-color: #b22222;
+    --remove-button-hover-bg-color: #dc143c;
+}
+
 body {
     font-family: 'Trebuchet MS', sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,8 +23,8 @@ body {
 }
 
 .container {
-    background-color: #fff8dc;
-    border: 3px solid #8b4513;
+    background-color: var(--container-bg-color);
+    border: 3px solid var(--border-color);
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -20,7 +33,7 @@ body {
 
 h1 {
     font-family: 'Papyrus', fantasy;
-    color: #8b4513;
+    color: var(--border-color);
     margin-bottom: 20px;
 }
 
@@ -31,7 +44,7 @@ h1 {
 .input-section input {
     padding: 10px;
     margin: 5px;
-    border: 2px solid #8b4513;
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     font-size: 16px;
 }
@@ -41,14 +54,14 @@ h1 {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #8b4513;
+    background-color: var(--button-bg-color);
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 
 .input-section button:hover {
-    background-color: #a0522d;
+    background-color: var(--button-hover-bg-color);
 }
 
 .controls-section {
@@ -60,19 +73,28 @@ h1 {
     margin: 5px;
     border: none;
     border-radius: 5px;
-    background-color: #8b4513;
+    background-color: var(--button-bg-color);
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
 
 .controls-section button:hover {
-    background-color: #a0522d;
+    background-color: var(--button-hover-bg-color);
 }
 
 .controls-section span {
     font-size: 18px;
     margin-left: 10px;
+}
+
+.theme-selector {
+    margin-bottom: 20px;
+}
+
+.theme-selector select {
+    padding: 5px;
+    font-size: 16px;
 }
 
 .player-list {
@@ -82,8 +104,8 @@ h1 {
 }
 
 .player-item {
-    background-color: #ffe4b5;
-    border: 2px solid #8b4513;
+    background-color: var(--player-item-bg-color);
+    border: 2px solid var(--border-color);
     border-radius: 5px;
     padding: 10px;
     display: flex;
@@ -92,7 +114,7 @@ h1 {
 }
 
 .player-item.active {
-    background-color: #f0e68c;
+    background-color: var(--active-player-bg-color);
 }
 
 .player-item .controls {
@@ -101,7 +123,7 @@ h1 {
 }
 
 .player-item button {
-    background-color: #b22222;
+    background-color: var(--remove-button-bg-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -113,17 +135,17 @@ h1 {
 }
 
 .player-item button:hover {
-    background-color: #dc143c;
+    background-color: var(--remove-button-hover-bg-color);
 }
 
 .player-item .move-up,
 .player-item .move-down {
-    background-color: #8b4513;
+    background-color: var(--button-bg-color);
 }
 
 .player-item .move-up:hover,
 .player-item .move-down:hover {
-    background-color: #a0522d;
+    background-color: var(--button-hover-bg-color);
 }
 
 .player-item .arrow {

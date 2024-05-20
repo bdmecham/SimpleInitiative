@@ -16,8 +16,19 @@ function addPlayer() {
 
 function removePlayer(index) {
     if (index === currentIndex) {
-        advancePlayer();
-        currentIndex--; // Adjust because the array will shrink
+        if (players.length === 1) {
+            currentIndex = -1;
+            rounds = 0;
+        } else {
+            advancePlayer();
+            currentIndex--; 
+            if (index === players.length - 1) {
+                rounds++;
+                currentIndex = 0;
+            }
+        }
+    } else if (currentIndex > index) {
+        currentIndex--;
     }
 
     players.splice(index, 1);
@@ -70,9 +81,12 @@ function advancePlayer() {
     }
 }
 
-function resetRounds() {
+function clearAll() {
+    players = [];
+    currentIndex = -1;
     rounds = 0;
     document.getElementById('roundCounter').textContent = `Rounds: ${rounds}`;
+    renderPlayers();
 }
 
 function renderPlayers() {
@@ -81,17 +95,78 @@ function renderPlayers() {
 
     players.forEach((player, index) => {
         const playerItem = document.createElement('div');
-        playerItem.className = 'player-item' + (index === currentIndex ? ' active' : '');
+        playerItem.classList.add('player-item');
+        if (index === currentIndex) {
+            playerItem.classList.add('active');
+        }
+
         playerItem.innerHTML = `
-            <span>${player.name} - ${player.roll}</span>
+            <span>${player.name} (Initiative: ${player.roll})</span>
             <div class="controls">
-                <button class="move-up" onclick="movePlayerUp(${index})">&#9650;</button>
-                <button class="move-down" onclick="movePlayerDown(${index})">&#9660;</button>
-                <button onclick="removePlayer(${index})">Remove</button>
+                <button class="move-up" onclick="movePlayerUp(${index})">&#x25B2;</button>
+                <button class="move-down" onclick="movePlayerDown(${index})">&#x25BC;</button>
+                <button class="remove" onclick="removePlayer(${index})">Remove</button>
             </div>
         `;
+
         playerList.appendChild(playerItem);
     });
+}
+
+function changeTheme() {
+    const theme = document.getElementById('theme').value;
+    let root = document.documentElement;
+
+    switch (theme) {
+        case 'dark':
+            root.style.setProperty('--bg-color', '#2b2b2b');
+            root.style.setProperty('--container-bg-color', '#1a1a1a');
+            root.style.setProperty('--border-color', '#ff6347');
+            root.style.setProperty('--text-color', '#d3d3d3');
+            root.style.setProperty('--button-bg-color', '#ff4500');
+            root.style.setProperty('--button-hover-bg-color', '#ff6347');
+            root.style.setProperty('--player-item-bg-color', '#4b0082');
+            root.style.setProperty('--active-player-bg-color', '#8b0000');
+            root.style.setProperty('--remove-button-bg-color', '#ff6347');
+            root.style.setProperty('--remove-button-hover-bg-color', '#ff7f50');
+            break;
+        case 'forest':
+            root.style.setProperty('--bg-color', '#d2f0d2');
+            root.style.setProperty('--container-bg-color', '#a8d5a8');
+            root.style.setProperty('--border-color', '#556b2f');
+            root.style.setProperty('--text-color', '#4b5320');
+            root.style.setProperty('--button-bg-color', '#6b8e23');
+            root.style.setProperty('--button-hover-bg-color', '#556b2f');
+            root.style.setProperty('--player-item-bg-color', '#98fb98');
+            root.style.setProperty('--active-player-bg-color', '#66cdaa');
+            root.style.setProperty('--remove-button-bg-color', '#556b2f');
+            root.style.setProperty('--remove-button-hover-bg-color', '#6b8e23');
+            break;
+        case 'ocean':
+            root.style.setProperty('--bg-color', '#e0ffff');
+            root.style.setProperty('--container-bg-color', '#afeeee');
+            root.style.setProperty('--border-color', '#4682b4');
+            root.style.setProperty('--text-color', '#2f4f4f');
+            root.style.setProperty('--button-bg-color', '#5f9ea0');
+            root.style.setProperty('--button-hover-bg-color', '#4682b4');
+            root.style.setProperty('--player-item-bg-color', '#b0e0e6');
+            root.style.setProperty('--active-player-bg-color', '#00ced1');
+            root.style.setProperty('--remove-button-bg-color', '#4682b4');
+            root.style.setProperty('--remove-button-hover-bg-color', '#5f9ea0');
+            break;
+        default:
+            root.style.setProperty('--bg-color', '#f0f8ff');
+            root.style.setProperty('--container-bg-color', '#fff8dc');
+            root.style.setProperty('--border-color', '#8b4513');
+            root.style.setProperty('--text-color', '#333');
+            root.style.setProperty('--button-bg-color', '#8b4513');
+            root.style.setProperty('--button-hover-bg-color', '#a0522d');
+            root.style.setProperty('--player-item-bg-color', '#ffe4b5');
+            root.style.setProperty('--active-player-bg-color', '#f0e68c');
+            root.style.setProperty('--remove-button-bg-color', '#b22222');
+            root.style.setProperty('--remove-button-hover-bg-color', '#dc143c');
+            break;
+    }
 }
 
 document.addEventListener('DOMContentLoaded', renderPlayers);
