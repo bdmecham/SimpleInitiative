@@ -1,13 +1,14 @@
 let players = [];
 let currentIndex = -1;
 let rounds = 0;
+let currentPlayerIndex = null;
 
 function addPlayer() {
     const playerName = document.getElementById('playerName').value;
     const initiativeRoll = document.getElementById('initiativeRoll').value;
 
     if (playerName && initiativeRoll) {
-        players.push({ name: playerName, roll: parseInt(initiativeRoll) });
+        players.push({ name: playerName, roll: parseInt(initiativeRoll), conditions: [] });
         renderPlayers();
         document.getElementById('playerName').value = '';
         document.getElementById('initiativeRoll').value = '';
@@ -21,7 +22,7 @@ function removePlayer(index) {
             rounds = 0;
         } else {
             advancePlayer();
-            currentIndex--; 
+            currentIndex--;
             if (index === players.length - 1) {
                 rounds++;
                 currentIndex = 0;
@@ -101,16 +102,49 @@ function renderPlayers() {
         }
 
         playerItem.innerHTML = `
-            <span>${player.name} (Initiative: ${player.roll})</span>
-            <div class="controls">
-                <button class="move-up" onclick="movePlayerUp(${index})">&#x25B2;</button>
-                <button class="move-down" onclick="movePlayerDown(${index})">&#x25BC;</button>
-                <button class="remove" onclick="removePlayer(${index})">Remove</button>
+            <div class="player-header">
+                <span>${player.name} (Initiative: ${player.roll})</span>
+                <div class="controls">
+                    <button class="move-up" onclick="movePlayerUp(${index})">&#x25B2;</button>
+                    <button class="move-down" onclick="movePlayerDown(${index})">&#x25BC;</button>
+                    <button class="remove" onclick="removePlayer(${index})">Remove</button>
+                    <button onclick="openConditionModal(${index})">Add Condition</button>
+                </div>
+            </div>
+            <div class="condition-list">
+                ${player.conditions.map((condition, i) => `<span onclick="removeCondition(${index}, ${i})">${condition}</span>`).join('')}
             </div>
         `;
 
         playerList.appendChild(playerItem);
     });
+}
+
+function openConditionModal(index) {
+    currentPlayerIndex = index;
+    document.getElementById('conditionModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('conditionModal').style.display = 'none';
+    currentPlayerIndex = null;
+}
+
+function applyCondition() {
+    const conditionSelect = document.getElementById('conditionSelect');
+    const condition = conditionSelect.value;
+
+    if (condition && currentPlayerIndex !== null && !players[currentPlayerIndex].conditions.includes(condition)) {
+        players[currentPlayerIndex].conditions.push(condition);
+        renderPlayers();
+    }
+
+    closeModal();
+}
+
+function removeCondition(playerIndex, conditionIndex) {
+    players[playerIndex].conditions.splice(conditionIndex, 1);
+    renderPlayers();
 }
 
 function changeTheme() {

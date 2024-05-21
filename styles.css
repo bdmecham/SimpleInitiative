@@ -109,8 +109,8 @@ h1 {
     border-radius: 5px;
     padding: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .player-item.active {
@@ -120,6 +120,7 @@ h1 {
 .player-item .controls {
     display: flex;
     gap: 5px;
+    justify-content: space-between;
 }
 
 .player-item button {
@@ -151,4 +152,226 @@ h1 {
 .player-item .arrow {
     font-size: 18px;
     line-height: 1;
+}
+
+.condition-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.condition-list span {
+    background-color: var(--button-bg-color);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.condition-list span:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.condition-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.condition-controls select {
+    padding: 5px;
+    font-size: 16px;
+}
+/* Add this at the end of your current CSS */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+
+/* Add this to your existing CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--container-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.input-section, .controls-section, .theme-selector {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.input-section input {
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.input-section button, .controls-section button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg-color);
+    color: white;
+    cursor: pointer;
+}
+
+.input-section button:hover, .controls-section button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+.theme-selector select {
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.player-list {
+    margin-top: 20px;
+}
+
+.player-item {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: var(--player-item-bg-color);
+}
+
+.player-item.active {
+    background-color: var(--active-player-bg-color);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls button {
+    margin-left: 5px;
+}
+
+.condition-list span {
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: var(--button-hover-bg-color);
 }
